@@ -1,0 +1,16 @@
+table {
+    background-color: var(--bg);
+    color: var(--text);
+    border: 2px solid var(--border);
+    border-radius: 1em;
+    align-self: center;
+    justify-self: center;
+}
+
+td,th {
+    padding: 10px;
+}
+
+th {
+    color: var(--accent);
+}
