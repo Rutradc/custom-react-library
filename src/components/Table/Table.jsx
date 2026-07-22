@@ -1,22 +1,35 @@
 import './Table.css'
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 
 export default function Table({ 
     items = [],
     columns = items.length <= 0 ? null : Object.keys(items[0]),
     rowsPerPage = 10
- }) {
+}) {
     const [page, setPage] = useState(1);
+    const [filter, setFilter] = useState('');
 
-    const maxPage = Math.max(1, Math.ceil(items.length / rowsPerPage));
+    const itemsComputed = useMemo(() => {
+        if (!filter) return items;
 
-    const itemsShown = items.slice(
+        return items.filter((item) =>
+            columns.some((column) =>
+                String(item[column])
+                    .toLowerCase()
+                    .includes(filter.toLowerCase())
+            )
+        );
+    }, [items, columns, filter]);
+
+    const maxPage = Math.max(1, Math.ceil(itemsComputed.length / rowsPerPage));
+
+    const itemsShown = itemsComputed.slice(
         (page - 1) * rowsPerPage,
         page * rowsPerPage
     );
 
-    const firstItem = (page - 1) * rowsPerPage + 1;
-    const lastItem = Math.min(page * rowsPerPage, items.length);
+    const firstItem = itemsComputed.length === 0 ? 0 : (page - 1) * rowsPerPage + 1;
+    const lastItem = Math.min(page * rowsPerPage, itemsComputed.length);
 
     if (items.length === 0) {
         return (
@@ -29,51 +42,72 @@ export default function Table({
     return (
         <>
             <table>
+            <caption>
+                <input
+                    className="table-filter"
+                    type="text"
+                    placeholder="Search..."
+                    value={filter}
+                    onChange={(e) => {
+                        setFilter(e.target.value);
+                        setPage(1);
+                    }}
+                />
+            </caption>
                 <thead>
                     <tr>
                         {columns.map(key => (
-                            <th key={key}>{key.charAt(0).toUpperCase() + key.substring(1)}</th>
+                            <th key={key}>
+                                {key.charAt(0).toUpperCase() + key.substring(1)}
+                            </th>
                         ))}
                     </tr>
                 </thead>
+
                 <tbody>
-                    {itemsShown.map((item, index) => (
-                        <tr key={index}>
-                            {columns.map(key => (
-                                <td key={`${index}-${key}`}>
-                                    {String(item[key])}
-                                </td>
-                            ))}
+                    {itemsComputed.length === 0 ? (
+                        <tr>
+                            <td colSpan={columns.length} className="empty-table">
+                                No results
+                            </td>
                         </tr>
-                    ))}
+                    ) : (
+                        itemsShown.map((item, index) => (
+                            <tr key={index}>
+                                {columns.map(key => (
+                                    <td key={`${index}-${key}`}>
+                                        {String(item[key])}
+                                    </td>
+                                ))}
+                            </tr>
+                        ))
+                    )}
                 </tbody>
             </table>
 
-            {items.length > 0 && (
-                <div className="pagination">
-                    <span className="items-info">
-                        {firstItem}–{lastItem} of {items.length} items
-                    </span>
+            <div className="pagination">
+                <span className="items-info">
+                    {firstItem}–{lastItem} of {itemsComputed.length} items
+                </span>
 
-                    <button
-                        onClick={() => setPage((p) => Math.max(1, p - 1))}
-                        disabled={page === 1}
-                    >
-                        ← Précédent
-                    </button>
+                <button
+                    onClick={() => setPage((p) => Math.max(1, p - 1))}
+                    disabled={page === 1}
+                >
+                    ← Précédent
+                </button>
 
-                    <span className="page-info">
-                        Page {page} / {maxPage}
-                    </span>
+                <span className="page-info">
+                    Page {page} / {maxPage}
+                </span>
 
-                    <button
-                        onClick={() => setPage((p) => Math.min(maxPage, p + 1))}
-                        disabled={page === maxPage}
-                    >
-                        Suivant →
-                    </button>
-                </div>
-            )}
+                <button
+                    onClick={() => setPage((p) => Math.min(maxPage, p + 1))}
+                    disabled={page === maxPage}
+                >
+                    Suivant →
+                </button>
+            </div>
         </>
-    )
+    );
 }
