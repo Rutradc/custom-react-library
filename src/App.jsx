@@ -1,21 +1,17 @@
-import { useState } from 'react'
 import './App.css'
-import { Checkbox } from './components'
-
-function App() {
-  const [agreed, setAgreed] = useState(false)
-  return (
-    <>
-      <Checkbox checked={agreed} onChange={setAgreed} label="I agree to the terms" />
 import React from 'react';
+import { useState } from 'react'
 import { Button } from './components';
-import './App.css'
+import { Checkbox } from './components'
 import { SideBar } from './components'
 import { navLinks } from './config/navLinks.js'
-
+import { Select } from './components'
 import { Table } from './components'
 
 function App() {
+
+  const [agreed, setAgreed] = useState(false)
+  const [selected, setSelected] = useState('')
 
   const personnes = [
     { name: 'Arthur', age: 24, city: "Namur"},
@@ -29,6 +25,16 @@ function App() {
   return (
     <>
       <SideBar links={navLinks} />
+      <Checkbox checked={agreed} onChange={setAgreed} label="I agree to the terms" />
+      <Select
+          options={[
+              { value: 'be', label: 'Belgium' },
+              { value: 'fr', label: 'France' },
+          ]}
+          value={selected}
+          onChange={setSelected}
+          placeholder="-- Choose a country --"
+      />
       <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <h2>Test de mes boutons</h2>
 
