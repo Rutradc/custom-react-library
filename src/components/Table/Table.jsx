@@ -56,10 +56,18 @@ export default function Table({
     const lastItem = Math.min(page * rowsPerPage, itemsComputed.length);
 
     const handleSort = (column) => {
-        setSorting((current) => ({
-            column,
-            desc: current.column === column ? !current.desc : false
-        }));
+        if (sorting.column === column && sorting.desc){
+            setSorting((current) => ({
+                column: '',
+                desc: true
+            }));
+        }
+        else {
+            setSorting((current) => ({
+                column,
+                desc: current.column === column ? !current.desc : false
+            }));
+        }
 
         setPage(1);
     };
