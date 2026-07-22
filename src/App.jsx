@@ -3,6 +3,7 @@ import React from "react";
 import {
   Button,
   Badge,
+  Card,
   Table,
   SideBar,
   Checkbox,
@@ -36,6 +37,19 @@ function App() {
           gap: "2rem",
         }}
       >
+        {/* SideBar et contrôles de formulaire */}
+        <SideBar links={navLinks} />
+        <Checkbox checked={agreed} onChange={setAgreed} label="I agree to the terms" />
+        <Select
+          options={[
+            { value: 'be', label: 'Belgium' },
+            { value: 'fr', label: 'France' },
+          ]}
+          value={selected}
+          onChange={setSelected}
+          placeholder="-- Choose a country --"
+        />
+            
         {/* Section Test des Boutons */}
         <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
           <SideBar links={navLinks} />
