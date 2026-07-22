@@ -1,6 +1,6 @@
 import './App.css'
 import React from 'react';
-import { Button, Badge, Table, Sidebar, Checkbox, Select } from './components';
+import { Button, Badge, Table, SideBar, Checkbox, Select } from './components';
 import './App.css'
 import { useState } from 'react'
 import { navLinks } from './config/navLinks.js'
@@ -20,11 +20,11 @@ function App() {
     { name: "Bob", age: 30, city: "Londres" }
   ]
   return (
+    <>
     <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       
       {/* Section Test des Boutons */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-    <>
       <SideBar links={navLinks} />
       <Checkbox checked={agreed} onChange={setAgreed} label="I agree to the terms" />
       <Select
