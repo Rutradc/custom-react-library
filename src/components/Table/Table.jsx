@@ -39,8 +39,10 @@ export default function Table({
                 <tbody>
                     {itemsShown.map((item, index) => (
                         <tr key={index}>
-                            {Object.values(item).map((value, i) => (
-                                <td key={i}>{String(value)}</td>
+                            {columns.map(key => (
+                                <td key={`${index}-${key}`}>
+                                    {String(item[key])}
+                                </td>
                             ))}
                         </tr>
                     ))}

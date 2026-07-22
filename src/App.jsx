@@ -59,6 +59,7 @@ function App() {
       </div>
 
       <Table items={personnes} rowsPerPage={5}></Table>
+      <Table items={personnes} rowsPerPage={5} columns={["city", "name"]}></Table>
       <Table items={[]}></Table>
       <Table></Table>
     </>
