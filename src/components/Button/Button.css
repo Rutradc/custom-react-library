@@ -1,0 +1,42 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+/* Variants */
+.btn.primary {
+  background-color: var(--accent);
+  color: #fff;
+  border: 1px solid transparent;
+}
+
+.btn.secondary {
+  background-color: var(--bg);
+  color: var(--text-h);
+  border: 1px solid var(--border);
+}
+
+.btn.danger {
+  background-color: #ef4444;
+  color: #fff;
+  border: 1px solid transparent;
+}
+
+/* États */
+.btn:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
