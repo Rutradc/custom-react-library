@@ -1,6 +1,9 @@
 import React from 'react';
 import { Button } from './components';
 import './App.css'
+import { SideBar } from './components'
+import { navLinks } from './config/navLinks.js'
+
 import { Table } from './components'
 
 function App() {
@@ -16,6 +19,7 @@ function App() {
   ]
   return (
     <>
+      <SideBar links={navLinks} />
       <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <h2>Test de mes boutons</h2>
 
