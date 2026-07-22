@@ -53,3 +53,83 @@ td:not(:last-child),
 th:not(:last-child) {
     border-right: 1px solid var(--border);
 }
+
+
+.pagination {
+    margin-top: 1.25rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pagination button {
+    padding: .6rem 1rem;
+
+    border: 1px solid var(--accent-border);
+    border-radius: .75rem;
+
+    background: var(--bg);
+    color: var(--accent);
+
+    font-family: var(--sans);
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+    background: var(--accent-bg);
+    transform: translateY(-1px);
+}
+
+.pagination button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.pagination button:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+.page-info {
+    min-width: 100px;
+
+    padding: .6rem 1rem;
+
+    border: 1px solid var(--border);
+    border-radius: .75rem;
+
+    background: var(--bg);
+
+    text-align: center;
+    font-weight: 500;
+}
+
+.items-info {
+    color: var(--text);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.table-empty {
+    width: 100%;
+    max-width: 900px;
+
+    margin: 2rem auto;
+    padding: 2rem;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg);
+    box-shadow: var(--shadow);
+
+    text-align: center;
+}
+
+.table-empty p {
+    margin: 0;
+    color: var(--accent);
+}

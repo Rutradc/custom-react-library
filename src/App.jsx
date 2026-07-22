@@ -6,8 +6,12 @@ import { Table } from './components'
 function App() {
 
   const personnes = [
-    { name: 'Arthur', age: 24, city: "Sombreffe"},
+    { name: 'Arthur', age: 24, city: "Namur"},
+    { name: "Charlie", age: 22, city: "Charleroi" },
+    { name: "Romeo", age: 19, city: "Milan" },
+    { name: "Enrique", age: 32, city: "Barcelone" },
     { name: "Alice", age: 25, city: "Paris" },
+    { name: "François", age: 34, city: "Lyon" },
     { name: "Bob", age: 30, city: "Londres" }
   ]
   return (
@@ -54,7 +58,9 @@ function App() {
         </div>
       </div>
 
-      <Table items={personnes}></Table>
+      <Table items={personnes} rowsPerPage={5}></Table>
+      <Table items={[]}></Table>
+      <Table></Table>
     </>
   );
 }
