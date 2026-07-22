@@ -10,6 +10,7 @@
     font-family: var(--sans);
     padding: 10px;
     box-sizing: border-box;
+    z-index: 1000;
 
     display: flex;
     flex-direction: column;
