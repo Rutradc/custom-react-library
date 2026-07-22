@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button, Badge } from './components';
+import { Button, Badge, Card } from './components';
 
 function App() {
   return (
-    <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+    <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '2rem', maxWidth: '800px', margin: '0 auto' }}>
       
       {/* Section Test des Boutons */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -80,6 +80,37 @@ function App() {
           <Badge content="Actif" isActive={true} variant="success" />
           <Badge content="Inactif" isActive={false} variant="success" />
         </div>
+      </div>
+
+      <hr style={{ border: '0', borderTop: '1px solid #cbd5e1' }} />
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+        <h2>Test de mes cards</h2>
+    
+        <Card
+          title="Title"
+          subtitle="Description"
+          image="https://picsum.photos/600/300"
+          footer={
+            <>
+              <Button variant="secondary" label="Cancel" />
+              <Button variant="primary" label="Validate" />
+            </>
+          }
+        >
+          <p>
+            Description
+          </p>
+        </Card>
+
+
+        <Card
+          title="Interactive card"
+          subtitle="Click on this card"
+          onClick={() => alert('You clicked ! ')}
+        >
+          <p>Click Here</p>
+        </Card>
       </div>
 
     </div>
