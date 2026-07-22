@@ -167,3 +167,50 @@ table caption {
     border-color: var(--accent);
     box-shadow: 0 0 0 3px var(--accent-bg);
 }
+
+.sort-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+
+    width: 100%;
+
+    border: none;
+    background: transparent;
+
+    color: var(--accent);
+
+    font: inherit;
+    font-weight: 600;
+
+    cursor: pointer;
+    padding: 0;
+
+    transition: color .2s ease;
+}
+
+.sort-button:hover {
+    color: var(--text-h);
+}
+
+.sort-icon {
+    font-size: .9rem;
+    font-weight: 900;
+
+    color: var(--text);
+    opacity: .5;
+
+    line-height: 1;
+
+    transition: opacity .2s ease, color .2s ease;
+}
+
+.sort-button:hover .sort-icon {
+    opacity: 1;
+}
+
+.sort-button.active .sort-icon {
+    color: var(--accent);
+    opacity: 1;
+}
