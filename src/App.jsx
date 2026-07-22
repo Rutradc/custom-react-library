@@ -1,14 +1,12 @@
-import './App.css'
 import React from 'react';
-import { Button, Badge, Table, Sidebar, Checkbox, Select } from './components';
-import './App.css'
-import { useState } from 'react'
-import { navLinks } from './config/navLinks.js'
+import { useState } from 'react';
+import { Button, Badge, Card, Table, SideBar, Checkbox, Select } from './components';
+import { navLinks } from './config/navLinks.js';
+import './App.css';
 
 function App() {
-
-  const [agreed, setAgreed] = useState(false)
-  const [selected, setSelected] = useState('')
+  const [agreed, setAgreed] = useState(false);
+  const [selected, setSelected] = useState('');
 
   const personnes = [
     { name: 'Arthur', age: 24, city: "Namur"},
@@ -18,25 +16,26 @@ function App() {
     { name: "Alice", age: 25, city: "Paris" },
     { name: "François", age: 34, city: "Lyon" },
     { name: "Bob", age: 30, city: "Londres" }
-  ]
+  ];
+
   return (
     <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '2rem', maxWidth: '800px', margin: '0 auto' }}>
       
-      {/* Section Test des Boutons */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-    <>
+      {/* SideBar et contrôles de formulaire */}
       <SideBar links={navLinks} />
       <Checkbox checked={agreed} onChange={setAgreed} label="I agree to the terms" />
       <Select
-          options={[
-              { value: 'be', label: 'Belgium' },
-              { value: 'fr', label: 'France' },
-          ]}
-          value={selected}
-          onChange={setSelected}
-          placeholder="-- Choose a country --"
+        options={[
+          { value: 'be', label: 'Belgium' },
+          { value: 'fr', label: 'France' },
+        ]}
+        value={selected}
+        onChange={setSelected}
+        placeholder="-- Choose a country --"
       />
-      <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+
+      {/* Section Test des Boutons */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <h2>Test de mes boutons</h2>
 
         <div>
@@ -114,6 +113,7 @@ function App() {
 
       <hr style={{ border: '0', borderTop: '1px solid #cbd5e1' }} />
 
+      {/* Section Test des Cards */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
         <h2>Test de mes cards</h2>
     
@@ -128,11 +128,8 @@ function App() {
             </>
           }
         >
-          <p>
-            Description
-          </p>
+          <p>Description</p>
         </Card>
-
 
         <Card
           title="Interactive card"
@@ -143,31 +140,19 @@ function App() {
         </Card>
       </div>
 
-    </div>
+      <hr style={{ border: '0', borderTop: '1px solid #cbd5e1' }} />
 
-        <div>
-          <Button 
-            variant="primary" 
-            label="Chargement en cours..." 
-            isLoading={true} 
-          />
-        </div>
-
-        <div>
-          <Button 
-            variant="primary" 
-            label="Je suis désactivé" 
-            disabled={true} 
-          />
-        </div>
+      {/* Section Test des Tables */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+        <h2>Test de mes tables</h2>
+        <Table items={personnes} rowsPerPage={5} />
+        <Table items={personnes} rowsPerPage={5} columns={["city", "name"]} />
+        <Table items={[]} />
+        <Table />
       </div>
 
-      <Table items={personnes} rowsPerPage={5}></Table>
-      <Table items={personnes} rowsPerPage={5} columns={["city", "name"]}></Table>
-      <Table items={[]}></Table>
-      <Table></Table>
-    </>
+    </div>
   );
 }
 
-export default App
+export default App;
