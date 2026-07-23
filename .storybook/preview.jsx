@@ -1,3 +1,5 @@
+import "/src/index.css"
+
 /** @type { import('@storybook/react-vite').Preview } */
 import '/src/index.css' 
 const preview = {
