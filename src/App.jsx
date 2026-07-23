@@ -158,6 +158,35 @@ function App() {
 
           <hr style={{ border: "0", borderTop: "1px solid #cbd5e1" }} />
 
+          {/* Section Test des Cards */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <h2>Test de mes cards</h2>
+        
+            <Card
+              title="Title"
+              subtitle="Description"
+              image="https://picsum.photos/600/300"
+              footer={
+                <>
+                  <Button variant="secondary" label="Cancel" />
+                  <Button variant="primary" label="Validate" />
+                </>
+              }
+            >
+              <p>Description</p>
+            </Card>
+
+            <Card
+              title="Interactive card"
+              subtitle="Click on this card"
+              onClick={() => alert('You clicked ! ')}
+            >
+              <p>Click Here</p>
+            </Card>
+          </div>
+
+          <hr style={{ border: '0', borderTop: '1px solid #cbd5e1' }} />
+
           {/* Section Test des Modals */}
           <div
             style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
@@ -167,7 +196,7 @@ function App() {
             <Modal
               title="Petite modal"
               size="small"
-              trigger={<Button label="petite modal" primary />}
+              trigger={<Button label="petite modal" variant="primary" />}
             >
               <p>Contenu</p>
             </Modal>
@@ -175,7 +204,7 @@ function App() {
             <Modal
               title="Moyenne modal"
               size="medium"
-              trigger={<Button label="moyenne modal" primary />}
+              trigger={<Button label="moyenne modal" variant="primary" />}
             >
               <p>Contenu</p>
             </Modal>
@@ -183,14 +212,14 @@ function App() {
             <Modal
               title="Grande modal"
               size="large"
-              trigger={<Button label="grande modal" primary />}
+              trigger={<Button label="grande modal" variant="primary" />}
             >
               <p>Contenu</p>
             </Modal>
 
             <Modal
               title="Supprimer un élément"
-              trigger={<Button label="Supprimer un élément" primary />}
+              trigger={<Button label="Supprimer un élément" variant="primary" />}
               size="small"
               showActions={true}
               confirmText="Supprimer"
