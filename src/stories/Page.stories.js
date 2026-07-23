@@ -1,4 +1,5 @@
 import { expect, userEvent, within } from 'storybook/test';
+import '../index.css' 
 
 import { Page } from './Page';
 
