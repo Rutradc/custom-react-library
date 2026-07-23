@@ -8,10 +8,10 @@ function SideBar({ links = [] }) {
     return (
         <>
             <button onClick={() => setOpen(true)}>&#9776;</button>
-            <div className={`SideBar SideBar-${open ? 'open' : 'closed'}`}>
+            <div className={`sidebar sidebar-${open ? 'open' : 'closed'}`}>
                 <button onClick={() => setOpen(false)}>&times; Close</button>
                 {links.map((link) => (
-                    <a key={link.href} href={link.href} className="SideBar-link">
+                    <a key={link.href} href={link.href} className="sidebar-link">
                         {link.label}
                     </a>
                 ))}
