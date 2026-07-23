@@ -1,5 +1,5 @@
-import { Card } from '../components/Card/Card';
-import { Button } from '../components/Button/Button'; // Si tu souhaites utiliser ton bouton dedans
+import { Card } from './Card';
+import { Button } from '../Button/Button'; // Si tu souhaites utiliser ton bouton dedans
 
 export default {
   title: 'Components/Card',
