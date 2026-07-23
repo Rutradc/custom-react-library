@@ -28,7 +28,7 @@
     box-sizing: border-box;
 }
 
-.checkbox-input:hover + .checkbox-box {
+.checkbox:hover .checkbox-box {
     border-color: var(--accent-border);
 }
 
@@ -45,7 +45,7 @@
 }
 
 .checkbox-input:focus-visible + .checkbox-box {
-    box-shadow: 0 0 0 3px var(--accent-shadow);
+    box-shadow: 0 0 0 3px var(--accent-bg);
 }
 
 .checkbox-disabled {
