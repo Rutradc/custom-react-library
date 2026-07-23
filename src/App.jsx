@@ -238,7 +238,7 @@ function App() {
       <Table items={[]}></Table>
       <Table></Table>
     </>
-  );
+  )
 }
 
 export default App;
