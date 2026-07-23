@@ -1,8 +1,8 @@
 import { fn } from 'storybook/test';
 import Table from './Table';
 
-
-const personnes = [
+//#region sample data
+const people = [
   {
     name: "Arthur",
     age: 24,
@@ -184,6 +184,7 @@ const personnes = [
     email: "chloe@example.com"
   }
 ];
+//#endregion
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
@@ -197,7 +198,9 @@ export default {
   tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/api/arg-types
 //   argTypes: {
-//     rowsPerPage: 
+//     rowsPerPage: {
+//         type: 
+//     }
 //   },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
   args: { onClick: fn() },
@@ -206,20 +209,20 @@ export default {
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Simple = {
   args: {
-    items: personnes
+    items: people
   },
 };
 
 export const CustomColumns = {
   args: {
-    items: personnes,
+    items: people,
     columns: ["salary", "job", "city", "country", "name"]
   },
 };
 
 export const LimitRowsPerPage = {
   args: {
-    items: personnes,
+    items: people,
     rowsPerPage: 5
   },
 };
